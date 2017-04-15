@@ -2,7 +2,7 @@
 -----------------
 > r0.12 
 > 翻译：[JackieChen]()
-> 校对：[chenmingjia](https://github.com/chenmingjia)
+> 校对：[wolffff](http://wolffff.com)
 
 Tensorflow 的高层次 API（tf.contrib.learn）使得配置、训练和评估许多机器学习模型变得简单起来。在这篇教程中，你将使用 tf.contrib.learn 构建一个[神经网络](https://en.wikipedia.org/wiki/Artificial_neural_network)分类器，然后使用 [Iris 数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set) 进行训练，来根据花的萼片、花瓣几何尺寸来预测花的种类。你将书写代码来完成以下五步：
 1.  将包含 Iris 训练集、测试集的 CSV 文件加载到 Tensorflow 的`数据集`
