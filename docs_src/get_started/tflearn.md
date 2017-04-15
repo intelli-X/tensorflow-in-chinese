@@ -235,7 +235,7 @@ def get_train_inputs():
 <a name="fit-dnnclassifier"></a>
 ## 将 Iris 训练数据装配到 DNNClassifier
 
-现在你已配置好的你的 DNN `分类`模型了，你可以利用 @{tf.contrib.learn.BaseEstimator.fit$`fit`} 方法，将训练数据装配到分类器上。把 `get_train_inputs` 作为 `input_fn`，然后设置要训练的轮数(这里， 2000)：
+现在你已配置好的你的 DNN `分类`模型了，你可以利用 [fit](../api_guides/python/contrib.learn.md#BaseEstimator.fit) 方法，将训练数据装配到分类器上。把 `get_train_inputs` 作为 `input_fn`，然后设置要训练的轮数(这里， 2000)：
 
 ```python
 # Fit model.
@@ -249,8 +249,8 @@ classifier.fit(x=training_set.data, y=training_set.target, steps=1000)
 classifier.fit(x=training_set.data, y=training_set.target, steps=1000)
 ```
 
-然而，如果你想要在训练的同时跟踪模型，你可能会使用 Tensorflow 监视器@{tf.contrib.learn.monitors$`monitor`}
-来进行日志操作，参见教程@{$monitors$&ldquo;Logging and Monitoring Basics with tf.contrib.learn&rdquo;} 来了解更多。
+然而，如果你想要在训练的同时跟踪模型，你可能会使用 Tensorflow 监视器 [monitor](https://www.tensorflow.org/code/tensorflow/contrib/learn/python/learn/monitors.py)
+来进行日志操作，参见教程 [Logging and Monitoring Basics with tf.contrib.learn](./monitors.md) 来了解更多。
 
 <a name="evaluate-accuracy"></a>
 ## 评估模型准确率
@@ -318,13 +318,13 @@ New Samples, Class Predictions:    [1 2]
 
 ## 额外资源
 
-*   有关 tf.contrib.learn 进一步的参考资料,请查阅官方API文档[API 文档](../api_guides/python/contrib.learn.md)。
+*   有关 tf.contrib.learn 进一步的参考资料,请查阅官方 API 文档[ API 文档](../api_guides/python/contrib.learn.md)。
 
-*   了解更多使用 tf.contrib.learn 构建线性模型的方法,请查看@{$linear$ TensorFlow应用于大规模线性模型}。
+*   了解更多使用 tf.contrib.learn 构建线性模型的方法,请查看[ TensorFlow 应用于大规模线性模型 ](./linear.md)。
 
 *   使用 tf.contrib.learn API 构建你自己的评估器（Estimator）, 查看[在 tf.contrib.learn 中创建评估器](http://terrytangyuan.github.io/2016/07/08/understand-and-build-tensorflow-estimator/)。
 
-*   实验神经网络模型并在浏览器上可视化，请参见 [Deep Playground](http://playground.tensorflow.org/).
+*   实验神经网络模型并在浏览器上可视化，请参见 [Deep Playground](http://playground.tensorflow.org/).
 
 *   有关更多神经网络的高级教程，请查看 [Convolutional Neural Networks](../tutorials/deep_cnn.md) 和 [Recurrent Neural Networks](../tutorials/recurrent.md).
 
