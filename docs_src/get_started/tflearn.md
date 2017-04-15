@@ -220,9 +220,9 @@ classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,
 *   `model_dir=/tmp/iris_model`. Tensorflow 保存检查点（checkpoint）的文件夹路径。想要了解更多关于 Tensorflow 日志和监控的信息，请查阅 @{$monitors$ tf.contrib.learn 日志和监控的信息}。
 
 <a name="train-input"></a>
-## 描述训练时的输入通道（input pipeline
+## 描述训练时的输入通道（input pipeline）
 
-`tf.contrib.learn` API 使用输入函数来创建为模型生成数据的 TensorFlow 操作。在本例中，考虑到数据集足够小，我们将其存储到@{tf.constant TensorFlow 常量}中。下面的代码创建了最简单输入通道：
+`tf.contrib.learn` API 使用输入函数来创建为模型生成数据的 TensorFlow 操作。在本例中，考虑到数据集足够小，我们将其存储到 TensorFlow 常量 中。下面的代码创建了最简单输入通道：
 
 ```python
 # 定义输入
