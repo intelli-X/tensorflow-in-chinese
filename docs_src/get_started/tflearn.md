@@ -190,13 +190,13 @@ test_set = tf.contrib.learn.datasets.base.load_csv_with_header(
 tf.contrib.learn 中的`数据集` 是 [named tuples](https://docs.python.org/2/library/collections.html#collections.namedtuple);你可以通过 `data` 和 `target` 来分别获取特征数据和目标值。这里， `training_set.data` 和 `training_set.target` 包含了训练集的特征数据和目标值，相应的， `test_set.data`
 和 `test_set.target` 包含了测试集的特征数据和目标值。
 
-接下来,在["使用 Iris 训练数据训练模型,"](#fit-dnnclassifier)章节中你将使用 `training_set.data` 和 `training_set.target` 来训练你的模型，然后在 ["评估模型准确率"](#evaluate-accuracy)章节你会用到 `test_set.data` 和
+接下来,在["将 Iris 训练数据装配到 DNNClassifier"](#fit-dnnclassifier)章节中你将使用 `training_set.data` 和 `training_set.target` 来训练你的模型，然后在 ["评估模型准确率"](#evaluate-accuracy)章节你会用到 `test_set.data` 和
 `test_set.target`。 但你首先要在下一个章节中构建你的模型。
 
 <a name="DNNClassifier"></a>
 ## 构建一个深度神经网络分类器
 
-tf.contrib.learn 提供许多预定义的模型，叫做@{$python/contrib.learn#estimators$`Estimator`s}。你可以直接使用这些 Estimator 在你自己的数据中进行训练和验证，而不用管这些模型内部的具体细节。这里你将配置一个深度神经网络分类器（DNNClassifier）来拟合 Iris 数据。通过使用 tf.contrib.learn, 你可以在短短几行代码内实例化你的 DNNClassifier。
+tf.contrib.learn 提供许多预定义的模型，叫做@[Estimator](../api_guides/python/contrib.learn.md#estimators)。你可以直接使用这些 Estimator 在你自己的数据中进行训练和验证，而不用管这些模型内部的具体细节。这里你将配置一个深度神经网络分类器（DNNClassifier）来拟合 Iris 数据。通过使用 tf.contrib.learn, 你可以在短短几行代码内实例化你的 DNNClassifier。
 
 ```python
 # 确定所有特征都是实数数据
@@ -219,7 +219,8 @@ classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,
 *   `n_classes=3`. 三个目标类别，分别代表三种鸢尾花种类
 *   `model_dir=/tmp/iris_model`. Tensorflow 保存检查点（checkpoint）的文件夹路径。想要了解更多关于 Tensorflow 日志和监控的信息，请查阅 @{$monitors$ tf.contrib.learn 日志和监控的信息}。
 
-## 描述训练时的输入通道（input pipeline）{#train-input}
+<a name="train-input"></a>
+## 描述训练时的输入通道（input pipeline
 
 `tf.contrib.learn` API 使用输入函数来创建为模型生成数据的 TensorFlow 操作。在本例中，考虑到数据集足够小，我们将其存储到@{tf.constant TensorFlow 常量}中。下面的代码创建了最简单输入通道：
 
@@ -231,8 +232,8 @@ def get_train_inputs():
 
   return x, y
 ```
-
-## 将 Iris 训练数据装配到 DNNClassifier {#fit-dnnclassifier}
+<a name="fit-dnnclassifier"></a>
+## 将 Iris 训练数据装配到 DNNClassifier
 
 现在你已配置好的你的 DNN `分类`模型了，你可以利用 @{tf.contrib.learn.BaseEstimator.fit$`fit`} 方法，将训练数据装配到分类器上。把 `get_train_inputs` 作为 `input_fn`，然后设置要训练的轮数(这里， 2000)：
 
@@ -251,9 +252,10 @@ classifier.fit(x=training_set.data, y=training_set.target, steps=1000)
 然而，如果你想要在训练的同时跟踪模型，你可能会使用 Tensorflow 监视器@{tf.contrib.learn.monitors$`monitor`}
 来进行日志操作，参见教程@{$monitors$&ldquo;Logging and Monitoring Basics with tf.contrib.learn&rdquo;} 来了解更多。
 
-## 评估模型准确率 {#evaluate-accuracy}
+<a name="evaluate-accuracy"></a>
+## 评估模型准确率
 
-你已经使用 Iris 训练集训练完成你的 `DNNClassifier` 模型了；现在，你可以使用 @{tf.contrib.learn.BaseEstimator.evaluate$`evaluate`} 方法，在 Iris 测试集上检测模型的准确率。和 `fit` 方法类似，`evaluate` 方法需要一个输入函数作为参数来构造其输入通道。`evaluate` 方法返回一个 `dict`，这个字典中包含评估结果。下面的代码将 Iris
+你已经使用 Iris 训练集训练完成你的 `DNNClassifier` 模型了；现在，你可以使用 [evaluate](../api_guides/python/contrib.learn.md#BaseEstimator.evaluate) 方法，在 Iris 测试集上检测模型的准确率。和 `fit` 方法类似，`evaluate` 方法需要一个输入函数作为参数来构造其输入通道。`evaluate` 方法返回一个 `dict`，这个字典中包含评估结果。下面的代码将 Iris
 测试数据&mdash;`test_set.data` 和 `test_set.target`&mdash;传给 `evaluate` 然后根据结果打印准确率：
 
 ```python
@@ -271,7 +273,7 @@ accuracy_score = classifier.evaluate(input_fn=get_test_inputs,
 print("\nTest Accuracy: {0:f}\n".format(accuracy_score))
 ```
 
-注意：这里 `evaluate` 函数的 `steps` 参数设为 1 很重要。因为@{tf.contrib.learn.Evaluable.evaluate$`evaluate`} 通常直到输入结束时才停止执行。当评估一组输入集合时，这样做非常合适，但是这里使用的常量将永远不会在一轮评估结束时抛出期待的  `OutOfRangeError` 或者 `StopIteration`（译者注：如果 `steps` 大于 1 会评估两轮）。 
+注意：这里 `evaluate` 函数的 `steps` 参数设为 1 很重要。因为[evaluate](../api_guides/python/contrib.learn.md#BaseEstimator.evaluate) 通常直到输入结束时才停止执行。当评估一组输入集合时，这样做非常合适，但是这里使用的常量将永远不会在一轮评估结束时抛出期待的  `OutOfRangeError` 或者 `StopIteration`（译者注：如果 `steps` 大于 1 会评估两轮）。 
 
 当你跑完了整个脚本，他会输出类似于下面的结果：
 
@@ -316,15 +318,15 @@ New Samples, Class Predictions:    [1 2]
 
 ## 额外资源
 
-*   有关 tf.contrib.learn 进一步的参考资料,请查阅官方API文档@{$python/contrib.learn$ API 文档}。
+*   有关 tf.contrib.learn 进一步的参考资料,请查阅官方API文档[API 文档](../api_guides/python/contrib.learn.md)。
 
 *   了解更多使用 tf.contrib.learn 构建线性模型的方法,请查看@{$linear$ TensorFlow应用于大规模线性模型}。
 
-*   使用 tf.contrib.learn API 构建你自己的评估器（Estimator）, 查看@{$estimators$在 tf.contrib.learn 中创建评估器}。
+*   使用 tf.contrib.learn API 构建你自己的评估器（Estimator）, 查看[在 tf.contrib.learn 中创建评估器](http://terrytangyuan.github.io/2016/07/08/understand-and-build-tensorflow-estimator/)。
 
 *   实验神经网络模型并在浏览器上可视化，请参见 [Deep Playground](http://playground.tensorflow.org/).
 
-*   有关更多神经网络的高级教程，请查看 @{$deep cnn$Convolutional Neural Networks} 和 @{$recurrent$Recurrent Neural Networks}.
+*   有关更多神经网络的高级教程，请查看 [Convolutional Neural Networks](../tutorials/deep_cnn.md) 和 [Recurrent Neural Networks](../tutorials/recurrent.md).
 
 
 
