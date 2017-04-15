@@ -11,7 +11,7 @@ Tensorflow 的高层次 API（tf.contrib.learn）使得配置、训练和评估�
 4.  评估模型的准确率
 5.  对新的样本进行分类
 
-注意: 在开始本次教程之前，首先在您的机器上安装Tensorflow
+注意: 在开始本次教程之前，首先在您的机器上安装 Tensorflow
 
 下面是神经网络分类器的全部代码：
 
@@ -106,7 +106,7 @@ if __name__ == "__main__":
 
 接下来的部分对上面的代码进行详细的解读。
 
-## 加载 Iris CSV 数据到Tensorflow
+## 加载 Iris CSV 数据到 Tensorflow 
 
 [Iris数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set) 包含150行数据，其中包括了三种鸢尾花：*Iris setosa*, *Iris virginica*, 和*Iris versicolor* ,每种包含 50 个样本。
 
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 6.2          | 3.4         | 5.4          | 2.3         | 2
 5.9          | 3.0         | 5.1          | 1.8         | 2
 
-在此次教程中，Iris 数据集被随机拆分成了两个独立的CSV文件：
+在此次教程中，Iris 数据集被随机拆分成了两个独立的 CSV 文件：
 
 *   包含 120 个样本的训练集    ([iris_training.csv](http://download.tensorflow.org/data/iris_training.csv))
 *   包含 30 个样本的测试集    ([iris_test.csv](http://download.tensorflow.org/data/iris_test.csv)).
