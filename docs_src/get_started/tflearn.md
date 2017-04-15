@@ -2,7 +2,7 @@
 
 Tensorflow 的高层次 API（tf.contrib.learn）使得配置、训练和评估许多机器学习模型变得简单起来。在这篇教程中，你将使用 tf.contrib.learn 构建一个[神经网络](https://en.wikipedia.org/wiki/Artificial_neural_network)分类器，然后使用 [Iris 数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set) 进行训练，来根据花的萼片、花瓣几何尺寸来预测花的种类。你将书写代码来完成以下五步：
 1.  将包含 Iris 训练集、测试集的 CSV 文件加载到 Tensorflow 的`数据集`
-2.  构建一个神经网络分类器 （tf.contrib.learn.DNNClassifier）
+2.  构建一个[神经网络分类器](#DNNClassifier)
 3.  使用训练集来训练模型
 4.  评估模型的准确率
 5.  对新的样本进行分类
@@ -193,6 +193,7 @@ tf.contrib.learn 中的`数据集` 是 [named tuples](https://docs.python.org/2/
 接下来,在["使用 Iris 训练数据训练模型,"](#fit-dnnclassifier)章节中你将使用 `training_set.data` 和 `training_set.target` 来训练你的模型，然后在 ["评估模型准确率"](#evaluate-accuracy)章节你会用到 `test_set.data` 和
 `test_set.target`。 但你首先要在下一个章节中构建你的模型。
 
+<a name="DNNClassifier"></a>
 ## 构建一个深度神经网络分类器
 
 tf.contrib.learn 提供许多预定义的模型，叫做@{$python/contrib.learn#estimators$`Estimator`s}。你可以直接使用这些 Estimator 在你自己的数据中进行训练和验证，而不用管这些模型内部的具体细节。这里你将配置一个深度神经网络分类器（DNNClassifier）来拟合 Iris 数据。通过使用 tf.contrib.learn, 你可以在短短几行代码内实例化你的 DNNClassifier。
