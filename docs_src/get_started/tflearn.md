@@ -4,7 +4,7 @@
 > 翻译：[JackieChen]()
 > 校对：[wolffff](http://wolffff.com)
 
-Tensorflow 的高层次 API（tf.contrib.learn）使得配置、训练和评估许多机器学习模型变得简单起来。在这篇教程中，你将使用 tf.contrib.learn 构建一个[神经网络](https://en.wikipedia.org/wiki/Artificial_neural_network)分类器，然后使用 [Iris 数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set) 进行训练，来根据花的萼片、花瓣几何尺寸来预测花的种类。你将书写代码来完成以下五步：
+Tensorflow 的高层次 API（tf.contrib.learn）使得配置、训练和评估许多机器学习模型变得简单起来。在这篇教程中，你将使用 tf.contrib.learn 构建一个[神经网络](https://en.wikipedia.org/wiki/Artificial_neural_network)分类器，使用 [Iris 数据集](https://en.wikipedia.org/wiki/Iris_flower_data_set) 进行训练，根据花的萼片、花瓣几何尺寸来预测花的种类。你将书写代码来完成以下五步：
 1.  将包含 Iris 训练集、测试集的 CSV 文件加载到 Tensorflow 的`数据集`
 2.  构建一个[神经网络分类器](#DNNClassifier)
 3.  使用训练集来训练模型
@@ -221,7 +221,7 @@ classifier = tf.contrib.learn.DNNClassifier(feature_columns=feature_columns,
 *   `feature_columns=feature_columns`. 上面定义的特征列集合
 *   `hidden_units=[10, 20, 10]`. 三个[隐层](http://stats.stackexchange.com/questions/181/how-to-choose-the-number-of-hidden-layers-and-nodes-in-a-feedforward-neural-netw),每层有 10,20,20 个神经元
 *   `n_classes=3`. 三个目标类别，分别代表三种鸢尾花种类
-*   `model_dir=/tmp/iris_model`. Tensorflow 保存检查点（checkpoint）的文件夹路径。想要了解更多关于 Tensorflow 日志和监控的信息，请查阅 @{$monitors$ tf.contrib.learn 日志和监控的信息}。
+*   `model_dir=/tmp/iris_model`. Tensorflow 保存检查点（checkpoint）的文件夹路径。想要了解更多关于 Tensorflow 日志和监控的信息，请查阅 monitors 日志和监控的信息}。
 
 <a name="train-input"></a>
 ## 描述训练时的输入通道（input pipeline）
